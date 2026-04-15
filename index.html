@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>KryonBank</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- LOGIN -->
+  <div id="login-screen" class="card">
+
+    <div class="logo-container">
+      <img src="logokryonbank.png" class="logo">
+    </div>
+
+    <input type="text" id="loginUser" placeholder="Usuario">
+    <input type="password" id="loginPass" placeholder="Clave">
+
+    <button onclick="login()">Ingresar</button>
+    <button onclick="mostrarRegistro()">Crear cuenta</button>
+
+  </div>
+
+  <!-- REGISTRO -->
+  <div id="register-screen" class="card hidden">
+
+    <h2>Crear cuenta</h2>
+
+    <input type="text" id="regUser" placeholder="Usuario">
+    <input type="password" id="regPass" placeholder="Clave">
+    <input type="number" id="regSaldo" placeholder="Saldo inicial">
+
+    <button onclick="registrar()">Registrar</button>
+    <button onclick="mostrarLogin()">Volver</button>
+
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="hidden">
+
+    <div class="card">
+      <h2>Balance</h2>
+      <h1>$<span id="saldo">0</span></h1>
+    </div>
+
+    <div class="acciones">
+      <button onclick="irRetirar()">Retirar</button>
+      <button onclick="irConsignar()">Consignar</button>
+      <button onclick="irTransferir()">Transferir</button>
+      <button onclick="irMovimientos()">Movimientos</button>
+      <button onclick="logout()">Cerrar sesión</button>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- RETIRAR -->
+<div id="retirar-screen" class="card hidden">
+  <h2>Retirar dinero</h2>
+  <input type="number" id="montoRetiro" placeholder="Monto">
+  <button onclick="confirmarRetiro()">Confirmar</button>
+  <button onclick="volverDashboard()">Volver</button>
+</div>
+
+<!-- CONSIGNAR -->
+<div id="consignar-screen" class="card hidden">
+  <h2>Consignar dinero</h2>
+  <input type="number" id="montoConsignar" placeholder="Monto">
+  <button onclick="confirmarConsignacion()">Confirmar</button>
+  <button onclick="volverDashboard()">Volver</button>
+</div>
+
+<!-- TRANSFERIR -->
+<div id="transferir-screen" class="card hidden">
+  <h2>Transferir</h2>
+  <input type="text" id="usuarioDestino" placeholder="Usuario destino">
+  <input type="number" id="montoTransferir" placeholder="Monto">
+  <button onclick="confirmarTransferencia()">Enviar</button>
+  <button onclick="volverDashboard()">Volver</button>
+</div>
+
+<!-- MOVIMIENTOS -->
+<div id="movimientos-screen" class="card hidden">
+  <h2>Movimientos</h2>
+  <div id="listaMovimientos"></div>
+  <button onclick="volverDashboard()">Volver</button>
+</div>
+
+<script src="data.js"></script>
+<script src="ui.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
