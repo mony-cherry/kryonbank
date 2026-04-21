@@ -1,98 +1,68 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>KryonBank</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>KryonBank</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="app">
 
-  <!-- LOGIN -->
-  <div id="login-screen" class="card">
-
-    <div class="logo-container">
-      <img src="logokryonbank.png" class="logo">
+    <!-- LOGIN -->
+    <div id="login" class="screen active">
+           <div class="logo-container">
+        <img src="./images/logokryonbank.png" class="logo">
+        </div>
+        <input id="loginNombre" placeholder="Usuario">
+        <input id="loginClave" type="password" placeholder="PIN">
+        <button onclick="login()">Entrar</button>
+        <button onclick="mostrarRegistro()">Crear cuenta</button>
+        <div class="msg" id="msgLogin"></div>
     </div>
 
-    <input type="text" id="loginUser" placeholder="Usuario">
-    <input type="password" id="loginPass" placeholder="Clave">
-
-    <button onclick="login()">Ingresar</button>
-    <button onclick="mostrarRegistro()">Crear cuenta</button>
-
-  </div>
-
-  <!-- REGISTRO -->
-  <div id="register-screen" class="card hidden">
-
-    <h2>Crear cuenta</h2>
-
-    <input type="text" id="regUser" placeholder="Usuario">
-    <input type="password" id="regPass" placeholder="Clave">
-    <input type="number" id="regSaldo" placeholder="Saldo inicial">
-
-    <button onclick="registrar()">Registrar</button>
-    <button onclick="mostrarLogin()">Volver</button>
-
-  </div>
-
-  <!-- DASHBOARD -->
-  <div id="dashboard" class="hidden">
-
-    <div class="card">
-      <h2>Balance</h2>
-      <h1>$<span id="saldo">0</span></h1>
+    <!-- REGISTRO -->
+    <div id="registro" class="screen">
+        <h2>Registro</h2>
+        <input id="regNombre" placeholder="Usuario">
+        <input id="regClave" type="password" maxlength="4" placeholder="PIN">
+        <input id="regSaldo" type="number" placeholder="Saldo inicial">
+        <button onclick="registrar()">Registrarse</button>
+        <button onclick="mostrarLogin()">Volver</button>
+        <div class="msg" id="msgRegistro"></div>
     </div>
 
-    <div class="acciones">
-      <button onclick="irRetirar()">Retirar</button>
-      <button onclick="irConsignar()">Consignar</button>
-      <button onclick="irTransferir()">Transferir</button>
-      <button onclick="irMovimientos()">Movimientos</button>
-      <button onclick="logout()">Cerrar sesión</button>
+    <!-- APP -->
+    <div id="app" class="screen">
+        <h2 id="saludo"></h2>
+
+        <div class="saldo-box">
+            <p>Saldo disponible</p>
+            <h1 id="saldo"></h1>
+            <button class="eye" onclick="toggleSaldo()">👁️</button>
+        </div>
+
+        <div class="acciones">
+            <button onclick="mostrarInput('consignar')">Consignar</button>
+            <button onclick="mostrarInput('retirar')">Retirar</button>
+            <button onclick="mostrarInput('transferir')">Transferir</button>
+            <button onclick="verMovimientos()">Movimientos</button>
+        </div>
+
+        <div id="operacionBox" class="hidden">
+            <input id="monto" type="number" placeholder="Ingrese monto">
+            <button id="btnAccion"></button>
+        </div>
+
+        <button class="salir" onclick="cerrarSesion()">Salir</button>
+
+        <!-- SCROLL AQUÍ -->
+        <div id="pantalla"></div>
     </div>
 
-  </div>
-
 </div>
 
-<!-- RETIRAR -->
-<div id="retirar-screen" class="card hidden">
-  <h2>Retirar dinero</h2>
-  <input type="number" id="montoRetiro" placeholder="Monto">
-  <button onclick="confirmarRetiro()">Confirmar</button>
-  <button onclick="volverDashboard()">Volver</button>
-</div>
-
-<!-- CONSIGNAR -->
-<div id="consignar-screen" class="card hidden">
-  <h2>Consignar dinero</h2>
-  <input type="number" id="montoConsignar" placeholder="Monto">
-  <button onclick="confirmarConsignacion()">Confirmar</button>
-  <button onclick="volverDashboard()">Volver</button>
-</div>
-
-<!-- TRANSFERIR -->
-<div id="transferir-screen" class="card hidden">
-  <h2>Transferir</h2>
-  <input type="text" id="usuarioDestino" placeholder="Usuario destino">
-  <input type="number" id="montoTransferir" placeholder="Monto">
-  <button onclick="confirmarTransferencia()">Enviar</button>
-  <button onclick="volverDashboard()">Volver</button>
-</div>
-
-<!-- MOVIMIENTOS -->
-<div id="movimientos-screen" class="card hidden">
-  <h2>Movimientos</h2>
-  <div id="listaMovimientos"></div>
-  <button onclick="volverDashboard()">Volver</button>
-</div>
-
-<script src="data.js"></script>
-<script src="ui.js"></script>
-<script src="app.js"></script>
-
+<script src="script.js"></script>
 </body>
+<div id="toast"></div>
 </html>

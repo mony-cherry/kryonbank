@@ -1,58 +1,100 @@
-body {
+/* ===== RESET ===== */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== BODY ===== */
+body {
   font-family: 'Segoe UI', sans-serif;
   background: radial-gradient(circle at center, #0a0f1c, #05070d);
   color: white;
-}
 
-.app {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-/* TARJETAS */
-.card {
+/* ===== APP CONTENEDOR ===== */
+.app {
+  width: 360px;
   background: rgba(10, 15, 35, 0.95);
-  padding: 50px 40px;
-  border-radius: 25px;
-  width: 320px;
-  text-align: center;
+  border-radius: 28px;
+  padding: 20px;
 
   display: flex;
   flex-direction: column;
-  gap: 15px;
 
-  box-shadow: 0 0 60px rgba(255, 215, 0, 0.15);
+  box-shadow: 
+    0 0 60px rgba(255, 215, 0, 0.15),
+    inset 0 0 40px rgba(255,255,255,0.02);
+
   border: 1px solid rgba(255, 215, 0, 0.2);
 }
 
-/* LOGO */
+/* ===== LOGO ===== */
 .logo {
   width: 180px;
-  margin: auto;
-  filter: drop-shadow(0 0 30px gold);
+  display: block;
+  margin: 0 auto 10px;
+  filter: drop-shadow(0 0 20px gold);
 }
 
-/* INPUTS */
+/* ===== PANTALLAS ===== */
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+
+  animation: fade 0.4s ease;
+}
+
+/* ===== INPUTS ===== */
 input {
+  width: 100%;
+  max-width: 280px;
+
   padding: 12px;
-  border-radius: 10px;
+  border-radius: 12px;
   border: none;
+
   background: #0a0f1c;
   color: white;
+
+  transition: 0.2s;
 }
 
-/* BOTONES PREMIUM */
+input::placeholder {
+  color: #888;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px gold;
+}
+
+/* ===== BOTONES ===== */
 button {
+  width: 100%;
+  max-width: 280px;
+
   padding: 12px;
-  border-radius: 10px;
+  border-radius: 12px;
   border: none;
+
   cursor: pointer;
   font-weight: bold;
-  color: black;
 
+  color: black;
   background: linear-gradient(145deg, #FFD700, #C9A227, #A67C00);
 
   box-shadow:
@@ -68,18 +110,187 @@ button:hover {
 }
 
 button:active {
-  transform: scale(0.97);
+  transform: scale(0.95);
 }
 
-/* ACCIONES */
-.acciones {
-  margin-top: 20px;
+/* BOTÓN SALIR */
+.salir {
+  background: linear-gradient(145deg, #ff4d4d, #b30000);
+  color: white;
+}
+
+/* ===== MENSAJES ===== */
+.msg {
+  color: #ff6b6b;
+  font-size: 13px;
+  text-align: center;
+  min-height: 18px;
+}
+
+/* ===== TARJETA SALDO ===== */
+.saldo-box {
+  width: 100%;
+
+  background: linear-gradient(145deg, #FFD700, #C9A227);
+  color: black;
+
+  border-radius: 22px;
+  padding: 25px 20px 20px;
+
+  position: relative;
+
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
 }
 
+.saldo-box p {
+  font-size: 12px;
+  color: rgba(0,0,0,0.7);
+}
+
+.saldo-box h1 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/* ===== OJO (OCULTAR SALDO) ===== */
+.eye {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  width: 32px;
+  height: 32px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: rgba(0, 0, 0, 0.25);
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.eye:hover {
+  background: rgba(0, 0, 0, 0.4);
+  transform: scale(1.05);
+}
+
+/* ===== ACCIONES ===== */
+.acciones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.acciones button {
+  width: 100%;
+  font-size: 13px;
+  padding: 14px;
+  border-radius: 14px;
+}
+
+/* ===== INPUT DINÁMICO ===== */
+#operacionBox {
+  width: 100%;
+  max-width: 280px; /* 🔥 igual que inputs y botones */
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  align-items: center; /* 🔥 centra contenido */
+  margin: 0 auto; /* 🔥 centra el bloque */
+  animation: fade 0.3s ease;
+}
+
+/* ===== HISTORIAL ===== */
+#pantalla {
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+/* SCROLL */
+#pantalla::-webkit-scrollbar {
+  width: 4px;
+}
+
+#pantalla::-webkit-scrollbar-thumb {
+  background: gold;
+  border-radius: 10px;
+}
+
+/* ===== TABLA ===== */
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.tabla th {
+  background: linear-gradient(145deg, #FFD700, #A67C00);
+  color: black;
+  padding: 6px;
+}
+
+.tabla td {
+  padding: 6px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ===== TOAST ===== */
+#toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  
+  background: rgba(10, 15, 35, 0.95);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+
+  border: 1px solid rgba(255, 215, 0, 0.3);
+
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+
+  opacity: 0;
+  transition: 0.4s ease;
+  z-index: 999;
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+
+
+/* ===== ANIMACIÓN ===== */
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== UTIL ===== */
 .hidden {
   display: none !important;
 }
