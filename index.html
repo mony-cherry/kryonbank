@@ -2,18 +2,26 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>KryonBank</title>
+
+<!-- FUENTES -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="app">
 
     <!-- LOGIN -->
     <div id="login" class="screen active">
-           <div class="logo-container">
-       <img src="logokryonbank.png" class="logo">
+        <div class="logo-container">
+            <img src="logokryonbank.png" class="logo">
         </div>
+
         <input id="loginNombre" placeholder="Usuario">
         <input id="loginClave" type="password" placeholder="PIN">
         <button onclick="login()">Entrar</button>
@@ -56,13 +64,15 @@
 
         <button class="salir" onclick="cerrarSesion()">Salir</button>
 
-        <!-- SCROLL AQUÍ -->
         <div id="pantalla"></div>
     </div>
 
 </div>
 
-<script src="script.js"></script>
-</body>
+<!-- 🔥 CORREGIDO: ahora sí dentro del body -->
 <div id="toast"></div>
-</html>
+
+<script src="script.js"></script>
+
+</body>
+</html

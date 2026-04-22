@@ -301,3 +301,5 @@ function verMovimientos(){
 function cerrarSesion(){
     location.reload();
 }
+
+
