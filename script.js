@@ -1,7 +1,7 @@
 let usuarioActual = null;
 let saldoVisible = true;
 
-// CAMBIAR PANTALLA
+
 function cambiar(id){
     document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
     document.getElementById(id).classList.add("active");
@@ -10,7 +10,7 @@ function cambiar(id){
 function mostrarRegistro(){ cambiar("registro"); }
 function mostrarLogin(){ cambiar("login"); }
 
-// STORAGE
+
 function getUsers(){
     let data = localStorage.getItem("usuarios");
     return data ? JSON.parse(data) : [];
@@ -33,12 +33,12 @@ function actualizarUsuario(){
     }
 }
 
-// VALIDAR PIN
+
 function validarPin(pin){
     return /^[0-9]{4}$/.test(pin);
 }
 
-// MENSAJES
+
 function msg(texto){
     if (document.getElementById("login").classList.contains("active")) {
         document.getElementById("msgLogin").innerText = texto;
@@ -51,7 +51,7 @@ function msg(texto){
     }
 }
 
-// REGISTRO
+
 function registrar(){
     let users = getUsers();
 
@@ -81,7 +81,7 @@ function registrar(){
     document.getElementById("msgLogin").innerText = "Usuario creado";
 }
 
-// LOGIN
+
 function login(){
     let users = getUsers();
 
@@ -115,7 +115,7 @@ function login(){
     }
 }
 
-// SALDO
+
 function actualizarSaldo(){
     saldo.innerText = saldoVisible ? "$"+usuarioActual.saldo : "$***";
 }
@@ -125,7 +125,6 @@ function toggleSaldo(){
     actualizarSaldo();
 }
 
-// INPUT DINÁMICO
 function mostrarInput(tipo){
     let box = document.getElementById("operacionBox");
 
@@ -159,12 +158,12 @@ function showToast(mensaje, tipo = "default") {
 
     toast.innerText = mensaje;
 
-    // reset base
+    
     toast.style.background = "rgba(10,15,35,0.95)";
     toast.style.color = "white";
     toast.style.border = "1px solid gold";
 
-    // estilos dinámicos
+  
     if(tipo === "error"){
         toast.style.background = "#2a0000";
         toast.style.color = "#ff4d4d";
@@ -184,7 +183,7 @@ function showToast(mensaje, tipo = "default") {
     }, 2500);
 }
 
-// CONSIGNAR
+
 function consignar(){
     let m = parseFloat(monto.value);
     if(isNaN(m)||m<=0) return showToast("Monto inválido", "error");
@@ -204,7 +203,7 @@ function consignar(){
     document.getElementById("operacionBox").classList.add("hidden");
 }
 
-// RETIRAR
+
 function retirar(){
     let m = parseFloat(monto.value);
     if(isNaN(m)||m<=0) return showToast("Monto inválido", "error");
@@ -249,7 +248,7 @@ function transferir(){
         return msg("Fondos insuficientes");
     }
 
-    // RESTAR
+    
     usuarioActual.saldo -= monto;
 
     usuarioActual.movimientos.push({
@@ -259,7 +258,7 @@ function transferir(){
         saldo: usuarioActual.saldo
     });
 
-    // SUMAR
+    
     destino.saldo += monto;
 
     destino.movimientos.push({
@@ -276,7 +275,7 @@ function transferir(){
     document.getElementById("operacionBox").classList.add("hidden");
 }
 
-// MOVIMIENTOS
+
 function verMovimientos(){
     if(usuarioActual.movimientos.length===0)
         return msg("Sin movimientos");
@@ -297,7 +296,7 @@ function verMovimientos(){
     pantalla.innerHTML = html;
 }
 
-// SALIR
+
 function cerrarSesion(){
     location.reload();
 }

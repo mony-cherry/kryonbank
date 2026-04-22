@@ -1,13 +1,13 @@
-/* ===== RESET ===== */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ===== BODY ===== */
+/* BODY */
 body {
-  font-family: 'Poppins', sans-serif; /* 🔥 CAMBIO AQUÍ */
+  font-family: 'Poppins', sans-serif; 
   background: radial-gradient(circle at center, #0a0f1c, #05070d);
   color: white;
 
@@ -17,12 +17,12 @@ body {
   height: 100vh;
 }
 
-/* ===== TITULOS ===== */
+/* TITULOS */
 h1, h2, h3 {
-  font-family: 'Montserrat', sans-serif; /* 🔥 CAMBIO AQUÍ */
+  font-family: 'Montserrat', sans-serif; 
 }
 
-/* ===== APP CONTENEDOR ===== */
+/* APP */
 .app {
   width: 360px;
   background: rgba(10, 15, 35, 0.95);
@@ -39,7 +39,7 @@ h1, h2, h3 {
   border: 1px solid rgba(255, 215, 0, 0.2);
 }
 
-/* ===== LOGO ===== */
+/* LOGO */
 .logo {
   width: 180px;
   display: block;
@@ -47,7 +47,7 @@ h1, h2, h3 {
   filter: drop-shadow(0 0 20px gold);
 }
 
-/* ===== PANTALLAS ===== */
+/* PANTALLAS */
 .screen {
   display: none;
 }
@@ -63,7 +63,7 @@ h1, h2, h3 {
   animation: fade 0.4s ease;
 }
 
-/* ===== INPUTS ===== */
+/* INPUTS */
 input {
   width: 100%;
   max-width: 280px;
@@ -87,7 +87,7 @@ input:focus {
   box-shadow: 0 0 0 2px gold;
 }
 
-/* ===== BOTONES ===== */
+/* BOTONES */
 button {
   width: 100%;
   max-width: 280px;
@@ -118,13 +118,13 @@ button:active {
   transform: scale(0.95);
 }
 
-/* BOTÓN SALIR */
+/* BOTON SALIR */
 .salir {
   background: linear-gradient(145deg, #ff4d4d, #b30000);
   color: white;
 }
 
-/* ===== MENSAJES ===== */
+/* MENSAJES */
 .msg {
   color: #ff6b6b;
   font-size: 13px;
@@ -132,7 +132,7 @@ button:active {
   min-height: 18px;
 }
 
-/* ===== TARJETA SALDO ===== */
+/* SALDO */
 .saldo-box {
   width: 100%;
 
@@ -161,7 +161,7 @@ button:active {
   font-weight: bold;
 }
 
-/* ===== OJO ===== */
+/* OJO SALDO */
 .eye {
   position: absolute;
   top: 12px;
@@ -181,21 +181,21 @@ button:active {
   justify-content: center;
 }
 
-/* ===== ACCIONES ===== */
+/* ACCIONES */
 .acciones {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
-/* ===== HISTORIAL ===== */
+/* HISTORIAL */
 #pantalla {
   width: 100%;
   max-height: 200px;
   overflow-y: auto;
 }
 
-/* ===== TOAST ===== */
+/* TOAST (CORREGIDO) */
 #toast {
   position: fixed;
   bottom: 30px;
@@ -210,7 +210,7 @@ button:active {
   transform: translateX(-50%) translateY(0);
 }
 
-/* ===== UTIL ===== */
+/* UTILIDAD */
 .hidden {
   display: none !important;
 }
